@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:orange_farms/pages/home/views/home_body.dart';
 import 'package:orange_farms/pages/workspace/workspace.dart';
 
+import '../sub_tasks/sub_tasks.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -13,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String taskType;
     return Scaffold(
         body: Column(
           children: <Widget>[
@@ -162,7 +165,10 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          taskType = 'Object Detection';
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => SubTasks(taskType)));
+                        },
                         child: Container(
                           height: size.height * 0.2,
                           width: size.width * 0.4,
@@ -194,7 +200,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          taskType = 'Segmentation';
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => SubTasks(taskType)));
+                        },
                         child: Container(
                           height: size.height * 0.2,
                           width: size.width * 0.4,
@@ -219,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Center(
                                     child: Text(
-                                  "Segmantation",
+                                  "Segmentation",
                                   style: TextStyle(),
                                 ))
                               ]),
